@@ -46,27 +46,27 @@ Then in VS Code, tell CoPilot to "Write code to implement the specification in d
 ```
 your-app-name
 |-- .github
-|   └── copilot-instructions.md
+|   +-- copilot-instructions.md
 |-- docs
-|   └── show-courses.md
-|   └── text-ui.png
-|   └── card-ui.pngho
-├── public
-│   └── robots.txt
-│   ├── vite.svg
-└── src
-    ├── index.css
-    ├── main.tsx
-    ├── vite-env.d.ts
-├── .gitignore
-├── eslint.config.js
-├── index.html
-├── package.json
-├── README.md
-├── tsconfig.app.json
-├── tsconfig.son
-├── tsconfig.node.json
-├── vite.config.ts
+|   +-- show-courses.md
+|   +-- text-ui.png
+|   +-- card-ui.pngho
++-- public
+|   +-- robots.txt
+|   +-- vite.svg
++-- src
+    +-- index.css
+    +-- main.tsx
+    +-- vite-env.d.ts
++-- .gitignore
++-- eslint.config.js
++-- index.html
++-- package.json
++-- README.md
++-- tsconfig.app.json
++-- tsconfig.son
++-- tsconfig.node.json
++-- vite.config.ts
 ```
 
 ## Credits

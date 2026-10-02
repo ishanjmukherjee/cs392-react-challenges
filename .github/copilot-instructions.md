@@ -1,4 +1,4 @@
-# CS394 Agile Software Engineering — Copilot Instructions
+# CS394 Agile Software Engineering -- Copilot Instructions
 
 This is a React + TypeScript web application built with Vite, using Firebase for backend
 services. The tech stack and conventions below are required for all code in this repo.
@@ -20,7 +20,7 @@ Use the latest versions of all dependencies unless a specific version is listed
 
 ## Code Style
 
-Formatting and linting are enforced by Prettier and ESLint — always ensure code passes
+Formatting and linting are enforced by Prettier and ESLint -- always ensure code passes
 both before considering any task complete. Do not add inline style overrides.
 
 Additional conventions:
@@ -107,7 +107,7 @@ Firebase SDK directly.
 ## Testing
 
 - Test files live alongside the component or module they test (`*.test.tsx` / `*.test.ts`)
-- Use React Testing Library; query by role, label, or text — not by test ID unless necessary
+- Use React Testing Library; query by role, label, or text -- not by test ID unless necessary
 - Mock all Firebase and network calls with `vi.mock()`
 - Import all functions and types explicitly by name in test files
 - Tests must pass before any task is considered complete
