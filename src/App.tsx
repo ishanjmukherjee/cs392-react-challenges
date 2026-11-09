@@ -10,8 +10,11 @@ const SCHEDULE_URL =
   'https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php';
 
 export const App = () => {
-  const { data: schedule, isLoading, error } =
-    useJsonQuery<Schedule>(SCHEDULE_URL);
+  const {
+    data: schedule,
+    isLoading,
+    error,
+  } = useJsonQuery<Schedule>(SCHEDULE_URL);
 
   if (error) {
     return (
