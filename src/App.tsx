@@ -1,5 +1,6 @@
-import { type Course, CourseCard } from './CourseCard';
+import { type Course } from './CourseCard';
 import { useJsonQuery } from './hooks/useJsonQuery';
+import { TermPage } from './TermPage';
 
 interface Schedule {
   title: string;
@@ -35,13 +36,7 @@ export const App = () => {
   return (
     <main>
       <h1>{schedule.title}</h1>
-      <ul className="grid grid-cols-[repeat(auto-fit,minmax(12rem,1fr))] gap-2">
-        {Object.entries(schedule.courses).map(([id, course]) => (
-          <li key={id}>
-            <CourseCard course={course} />
-          </li>
-        ))}
-      </ul>
+      <TermPage courses={schedule.courses} />
     </main>
   );
 };
