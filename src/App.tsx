@@ -1,53 +1,44 @@
 import { type Course, CourseCard } from './CourseCard';
+import { useJsonQuery } from './hooks/useJsonQuery';
 
 interface Schedule {
   title: string;
   courses: Record<string, Course>;
 }
 
-const schedules: Record<string, Schedule> = {
-  'CS-2018-2019': {
-    title: 'CS Courses for 2018-2019',
-    courses: {
-      F101: {
-        term: 'Fall',
-        number: '101',
-        meets: 'MWF 11:00-11:50',
-        title: 'Computer Science: Concepts, Philosophy, and Connections',
-      },
-      F110: {
-        term: 'Fall',
-        number: '110',
-        meets: 'MWF 10:00-10:50',
-        title: 'Intro Programming for non-majors',
-      },
-      S313: {
-        term: 'Spring',
-        number: '313',
-        meets: 'TuTh 15:30-16:50',
-        title: 'Tangible Interaction Design and Learning',
-      },
-      S314: {
-        term: 'Spring',
-        number: '314',
-        meets: 'TuTh 9:30-10:50',
-        title: 'Tech & Human Interaction',
-      },
-    },
-  },
+const SCHEDULE_URL =
+  'https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php';
+
+export const App = () => {
+  const { data: schedule, isLoading, error } =
+    useJsonQuery<Schedule>(SCHEDULE_URL);
+
+  if (error) {
+    return (
+      <main>
+        <p role="alert">Error loading courses: {error.message}</p>
+      </main>
+    );
+  }
+
+  if (isLoading || !schedule) {
+    return (
+      <main>
+        <p>Loading courses…</p>
+      </main>
+    );
+  }
+
+  return (
+    <main>
+      <h1>{schedule.title}</h1>
+      <ul className="grid grid-cols-[repeat(auto-fit,minmax(12rem,1fr))] gap-2">
+        {Object.entries(schedule.courses).map(([id, course]) => (
+          <li key={id}>
+            <CourseCard course={course} />
+          </li>
+        ))}
+      </ul>
+    </main>
+  );
 };
-
-const schedule = schedules['CS-2018-2019'];
-
-export const App = () => (
-  <main>
-    <h1>{schedule.title}</h1>
-    <ul className="grid grid-cols-[repeat(auto-fit,minmax(12rem,1fr))] gap-2">
-      {Object.entries(schedule.courses).map(([id, course]) => (
-        <li key={id}>
-          <CourseCard course={course} />
-        </li>
-      ))}
-    </ul>
-  </main>
-);
