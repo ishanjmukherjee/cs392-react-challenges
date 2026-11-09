@@ -1,37 +1,38 @@
-# Card UI with Tailwind
+# Card UI for the course list
 
-Restyle the course list in `src/App.tsx` as a grid of cards using Tailwind
-utility classes, matching the reference image `docs/card-ui.png`.
+Restyle the course list in `src/App.tsx` as a responsive grid of cards, matching
+the look of `docs/card-ui.png`.
 
-## Card contents
+Each card shows, top to bottom:
 
-Each course is one card containing, top to bottom:
+- the term and course number as a heading, e.g., "Fall CS 101"
+- the course title
+- a divider, then the meeting time, e.g., "MWF 11:00-11:50"
 
-1. A heading with the term and course number, e.g., "Fall CS 101".
-2. The course title in smaller text, e.g., "Computer Science: Concepts,
-   Philosophy, and Connections".
-3. A thin horizontal divider.
-4. The meeting time, e.g., "MWF 11:00-11:50".
+Cards have a light border, rounded corners, and comfortable padding, as in the
+reference.
 
-Cards have a light gray border, rounded corners, a white background, and
-consistent internal padding.
+Layout behavior:
 
-## Layout
-
-- Cards wrap onto multiple rows depending on screen width: one column on
-  phones, more columns on wider screens.
-- Each row fills the available screen width, with an even gap between cards.
-- Cards on the same row are the same height, regardless of title length.
+- Cards wrap onto more rows as the screen narrows, down to one column on a
+  phone. Each row fills the available width.
+- Cards on the same row are the same height with the same internal spacing.
 - The divider and meeting time sit at the bottom of every card, so they line up
-  across a row even when titles wrap to different numbers of lines.
+  across a row even when titles wrap to different lengths.
 
-## Code structure
+Pull the card out into its own `CourseCard` component that takes a course as a
+typed prop, so later features (term filters, selection) can build on it.
 
-- Extract a `CourseCard` component that takes a `course: Course` prop.
-- Keep the list's semantics (`ul`/`li`) and a stable key per course.
-- Keep the schedule title as an `h1` above the grid.
+## Context
 
-## Out of scope
-
-Do not add selection, filtering, fetching, routing, or new data. Do not
-introduce other CSS libraries or hand-written CSS; use Tailwind classes only.
+- Vite + React 19 + TypeScript. Tailwind CSS v4 is already installed and loaded
+  via `@tailwindcss/vite` and `@import 'tailwindcss'` in `src/index.css`. There
+  is no `tailwind.config.js`; v4 doesn't need one. Style with utility classes
+  rather than new CSS files.
+- The reference image shows example courses that differ from the app's data.
+  Keep the existing hard-coded `schedules` data and the schedule title heading.
+- Node isn't on the global PATH on this machine. Use
+  `export PATH=/Users/ishanjmukherjee/projects/cs392-local/.tools/node-v24.21.0-darwin-arm64/bin:$PATH`
+  before running npm.
+- Done means `npm run build` and `npm run lint` pass. Leave the changes
+  uncommitted so they can be reviewed.
